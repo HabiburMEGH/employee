@@ -15,9 +15,11 @@ if (args.length != 1) {
           System.out.println("Loading data ...");
 try {
 BufferedReader r = new BufferedReader(new InputStreamReader(new FileInputStream("employees.txt")));
-  String l = r.readLine();
-  String e[] = l.split(",");
-for (String emp : e) {
+// l=lineData for better understanding
+  String lineData = r.readLine();
+  //e=employeeArray for better understanding
+  String employeeArray[] = lineData.split(",");
+for (String emp : employeeArray) {
 System.out.println(emp);
 }
 } 
@@ -27,12 +29,14 @@ System.out.println("Data Loaded.");
 System.out.println("Loading data ...");
 try {
 BufferedReader r = new BufferedReader(new InputStreamReader(new FileInputStream("employees.txt")));
-String l = r.readLine();
-System.out.println(l);
-String e[] = l.split(",");
+//change variable name l==lineData
+String lineData = r.readLine();
+System.out.println(lineData);
+//e==employeeArray for better transperancy
+String employeeArray[] = lineData.split(",");
 Random rand = new Random();
-int idx = rand.nextInt(e.length);
-System.out.println(e[idx]);
+int idx = rand.nextInt(employeeArray.length);
+System.out.println(employeeArray[idx]);
 } 
 catch (Exception e) {}
 System.out.println("Data Loaded.");
@@ -43,8 +47,9 @@ System.out.println("Loading data ...");
 try 
 {
 BufferedWriter w = new BufferedWriter(new FileWriter("employees.txt", true));
-String n = args[0].substring(1);
-w.write(", " + n);
+//n== newemployee
+String newemployee = args[0].substring(1);
+w.write(", " + newemployee);
 w.close();
 } 
 catch (Exception e) {}
@@ -54,12 +59,13 @@ System.out.println("Loading data ...");
 try 
 {
 BufferedReader r = new BufferedReader(new InputStreamReader(new FileInputStream("employees.txt")));
-String l = r.readLine();
-String e[] = l.split(",");
+//change variable name 
+String lineData = r.readLine();
+String employeeArray[] = lineData.split(",");
 boolean found = false;
 String s = args[0].substring(1);
-for (int i = 0; i < e.length && !found; i++) {
-if (e[i].equals(s)) {
+for (int i = 0; i < employeeArray.length && !found; i++) {
+if (employeeArray[i].equals(s)) {
 System.out.println("Employee found!");
 found = true;
 }
@@ -71,8 +77,9 @@ System.out.println("Data Loaded.");
 System.out.println("Loading data ...");
 try {
 BufferedReader r = new BufferedReader(new InputStreamReader(new FileInputStream("employees.txt")));
-String l = r.readLine();
-char[] chars = l.toCharArray();
+//change variable
+String lineData = r.readLine();
+char[] chars = lineData.toCharArray();
 boolean inWord = false;
 int count = 0;
 for (char c : chars) {
@@ -95,17 +102,18 @@ System.out.println("Loading data ...");
 try 
 {
 BufferedReader r = new BufferedReader(new InputStreamReader(new FileInputStream("employees.txt")));
-String l = r.readLine();
-String e[] = l.split(",");
-String n = args[0].substring(1);
-for (int i = 0; i < e.length; i++) {
-if (e[i].equals(n)) {
-e[i] = "Updated";
+//change the variable name
+String lineData = r.readLine();
+String employeeArray[] = lineData.split(",");
+String newemployee = args[0].substring(1);
+for (int i = 0; i < employeeArray.length; i++) {
+if (employeeArray[i].equals(newemployee)) {
+employeeArray[i] = "Updated";
 }
 }
 BufferedWriter w = new BufferedWriter(
 new FileWriter("employees.txt"));
-w.write(String.join(",", e));
+w.write(String.join(",", employeeArray));
 w.close();
 } 
 catch (Exception e) {}
@@ -117,13 +125,14 @@ try
 BufferedReader r = new BufferedReader(
 new InputStreamReader(
 new FileInputStream("employees.txt")));
-String l = r.readLine();
-String e[] = l.split(",");
+String lineData = r.readLine();
+String employeeArray[] = lineData.split(",");
 String n = args[0].substring(1);
-List<String> list = new ArrayList<>(Arrays.asList(e));
-list.remove(n);
+List<String> employeeList = new ArrayList<>(Arrays.asList(employeeArray));
+employeeList.remove(n);
 BufferedWriter w = new BufferedWriter(new FileWriter("employees.txt"));
-w.write(String.join(",", list));
+w.write(String.join(",", employeeList));
+
 w.close();
 } 
 catch (Exception e) {}
