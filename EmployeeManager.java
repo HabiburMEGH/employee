@@ -14,11 +14,8 @@ if (args.length != 1) {
       if (args[0].equals("l")) {
           System.out.println("Loading data ...");
 try {
-BufferedReader r = new BufferedReader(new InputStreamReader(new FileInputStream("employees.txt")));
-// l=lineData for better understanding
-  String lineData = r.readLine();
-  //e=employeeArray for better understanding
-  String employeeArray[] = lineData.split(",");
+    String[] employeeArray = readEmployeesFromFile();
+//যে section-এই file read হবে শুধু এই method call করবে।
 for (String emp : employeeArray) {
 System.out.println(emp);
 }
